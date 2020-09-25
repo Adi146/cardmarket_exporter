@@ -23,5 +23,5 @@ class StockCollector(object):
 
         return getArticleGauges(
             result_dict=result_dict,
-            main_name='stock'
+            main_name='cardmarket_stock'
         )

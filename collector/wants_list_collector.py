@@ -10,9 +10,9 @@ class WantsListCollector(object):
         wants_list_response = self.cardMarket.wants_list.get_all_wants_list()
         wants_list_json = wants_list_response.json()
 
-        count_gauge = GaugeMetricFamily('wants_list_single_count', 'Count of cards on a wants list', labels=['list'])
-        price_gauge = GaugeMetricFamily('wants_list_total_price', 'Total price of wants list', labels=['list'])
-        price_single_gauge = GaugeMetricFamily('wants_list_single_price', 'Price of single card on wants list', labels=['list', 'card', 'count'])
+        count_gauge = GaugeMetricFamily('cardmarket_wants_list_single_count', 'Count of cards on a wants list', labels=['list'])
+        price_gauge = GaugeMetricFamily('cardmarket_wants_list_total_price', 'Total price of wants list', labels=['list'])
+        price_single_gauge = GaugeMetricFamily('cardmarket_wants_list_single_price', 'Price of single card on wants list', labels=['list', 'card', 'count'])
 
         for wants_list in wants_list_json['wantslist']:
             id = wants_list['idWantslist']

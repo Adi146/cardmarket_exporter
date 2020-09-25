@@ -12,8 +12,8 @@ class OrderCollector(object):
         self.cardMarket = Mkm(_API_MAP["2.0"]["api"], _API_MAP["2.0"]["api_root"])
 
     def collect(self):
-        count_gauge = GaugeMetricFamily('OrderCount', 'Total count of orders', labels=['actor', 'orderState'])
-        value_gauge = GaugeMetricFamily('OrderValue', 'Total value of orders', labels=['actor', 'orderState'])
+        count_gauge = GaugeMetricFamily('cardmarket_order_count', 'Total count of orders', labels=['actor', 'orderState'])
+        value_gauge = GaugeMetricFamily('cardmarket_order_value', 'Total value of orders', labels=['actor', 'orderState'])
 
         for actor in ORDER_ACTORS:
             for state in ORDER_STATES:
@@ -39,7 +39,7 @@ class OrderCollector(object):
                 value_gauge.add_metric([actor, state], order_value)
                 for gauge in getArticleGauges(
                     result_dict=order_article_result_dict, 
-                    main_name='order_article', 
+                    main_name='cardmarket_order_article', 
                     additional_labels={'actor': actor, 'orderState': state}
                 ):
                     yield gauge

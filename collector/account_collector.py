@@ -9,9 +9,9 @@ class AccountCollector(object):
         self.cardMarket = Mkm(_API_MAP["2.0"]["api"], _API_MAP["2.0"]["api_root"])
 
     def collect(self):
-        credit_gauge = GaugeMetricFamily('account_credit', 'Current account credit for user', labels=['type'])
-        unread_messages_gauge = GaugeMetricFamily('account_unread_messages', 'Current unread messages')
-        on_vacation_gauge = GaugeMetricFamily('account_on_vacation', 'Current vacation state')
+        credit_gauge = GaugeMetricFamily('cardmarket_account_credit', 'Current account credit for user', labels=['type'])
+        unread_messages_gauge = GaugeMetricFamily('cardmarket_account_unread_messages', 'Current unread messages')
+        on_vacation_gauge = GaugeMetricFamily('cardmarket_account_on_vacation', 'Current vacation state')
 
         account_response = self.cardMarket.account_management.account()
         account_json = account_response.json()
